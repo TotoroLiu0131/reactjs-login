@@ -6,7 +6,7 @@ import { signup } from "../../actions/auth" ;
 
 class SignupPage extends React.Component {
     submit = data => 
-        this.props.signup(data).then(() => this.props.history.push('/HomePage'));
+        this.props.signup(data).then(() => this.props.history.push('/'));
     
     render(){
         return (
