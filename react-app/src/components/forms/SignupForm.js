@@ -39,7 +39,8 @@ class SignupForm extends Component {
     validate = (data) => {
         const errors = {};
         if (!Validator.isEmail(data.email)) errors.email = "Email格式不符合";
-        if (!data.password || !Validator.isLength(data.password, 4, 16)) errors.password = "請輸入8~16位元密碼";
+        if (!data.password || !Validator.isLength(data.password, 4, 16)) errors.password = "請輸入4~16位元密碼";
+        if (!data.confirmpassword || !Validator.isLength(data.confirmpassword, 4, 16)) errors.confirmpassword = "請輸入4~16位元密碼";
         if (data.password !== data.confirmpassword) errors.confirmpassword = "確認密碼錯誤"
         return errors
     };
@@ -67,8 +68,9 @@ class SignupForm extends Component {
                         <label htmlFor="email">Email</label>
                         <Input 
                             type="email" 
-                            id="email" 
                             name="email" 
+                            icon='user'
+                            iconPosition='left'
                             placeholder="example@mail.com"
                             onChange={this.onchange}
                         />
@@ -78,9 +80,10 @@ class SignupForm extends Component {
                         <label htmlFor="password">密碼</label>
                         <Input 
                             type="password" 
-                            id="password" 
                             name="password" 
-                            placeholder=""
+                            icon='lock'
+                            iconPosition='left'
+                            placeholder="Password"
                             onChange={this.onchange}
                         />
                         {errors.password && <InlineError text={errors.password} />}
@@ -89,14 +92,15 @@ class SignupForm extends Component {
                         <label htmlFor="confirmpassword">確認密碼</label>
                         <Input 
                             type="password" 
-                            id="confirmpassword" 
                             name="confirmpassword" 
-                            placeholder=""
+                            icon='lock'
+                            iconPosition='left'
+                            placeholder="Password"
                             onChange={this.onchange}
                         />
                         {errors.confirmpassword && <InlineError text={errors.confirmpassword} />}
                     </Form.Field>
-                    <Button primary >登入</Button>
+                    <Button color='teal' fluid size='large'>登入</Button>
                 </Form>
                 <Message attached='bottom' warning>
                     <Icon name="vcard"/>

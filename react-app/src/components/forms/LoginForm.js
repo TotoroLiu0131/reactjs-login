@@ -64,8 +64,9 @@ class LoginForm extends Component{
                         <label htmlFor="email">Email</label>
                         <Input 
                             type="email" 
-                            id="email" 
                             name="email" 
+                            icon='user'
+                            iconPosition='left'
                             placeholder="example@mail.com"
                             onChange={this.onchange}
                         />
@@ -75,14 +76,15 @@ class LoginForm extends Component{
                         <label htmlFor="password">密碼</label>
                         <Input 
                             type="password" 
-                            id="password" 
                             name="password" 
-                            placeholder=""
+                            icon='lock'
+                            iconPosition='left'
+                            placeholder="Password"
                             onChange={this.onchange}
                         />
                         {errors.password && <InlineError text={errors.password} />}
                     </Form.Field>
-                    <Button primary >登入</Button>
+                    <Button color='teal' fluid size='large' >登入</Button>
                 </Form>
                 <Message attached='bottom' warning>
                     <Icon name="user plus"/>
