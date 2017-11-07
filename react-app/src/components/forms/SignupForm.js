@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from "prop-types";
-import {Form, Button, Message, Input, Icon} from "semantic-ui-react";
+import {Form, Button, Message, Input, Icon, Grid} from "semantic-ui-react";
 import Validator from "validator" ;
 import { Link } from "react-router-dom";
 import InlineError from "../messages/InlineError";
@@ -49,63 +49,69 @@ class SignupForm extends Component {
         const { errors, loading } = this.state ;
         return (
             <div>
-                <Message 
-                    attached
-                    header='歡迎加入！'
-                    content='請輸入您的Email和密碼'
-                />
-                <Form 
-                    className='attached fluid segment' 
-                    onSubmit={this.onSubmit} 
-                    loading={loading}
+                <Grid
+                    textAlign='center'
+                    style={{ height: '100%' }}
+                    verticalAlign='middle'
                 >
-                    {errors.global && (
-                        <Message negative>
-                            <Message.Header>{ errors.global }</Message.Header>
-                        </Message> 
-                    )}
-                    <Form.Field error={!!errors.email}>
-                        <label htmlFor="email">Email</label>
-                        <Input 
-                            type="email" 
-                            name="email" 
-                            icon='user'
-                            iconPosition='left'
-                            placeholder="example@mail.com"
-                            onChange={this.onchange}
+                    <Grid.Column style={{ maxWidth: 450 }}>
+                        <Message 
+                            attached
+                            header='歡迎加入！'
+                            content='請輸入您的Email和密碼'
                         />
-                        {errors.email && <InlineError text={errors.email} />}
-                    </Form.Field>
-                    <Form.Field error={!!errors.password}>
-                        <label htmlFor="password">密碼</label>
-                        <Input 
-                            type="password" 
-                            name="password" 
-                            icon='lock'
-                            iconPosition='left'
-                            placeholder="Password"
-                            onChange={this.onchange}
-                        />
-                        {errors.password && <InlineError text={errors.password} />}
-                    </Form.Field>
-                    <Form.Field error={!!errors.confirmpassword}>
-                        <label htmlFor="confirmpassword">確認密碼</label>
-                        <Input 
-                            type="password" 
-                            name="confirmpassword" 
-                            icon='lock'
-                            iconPosition='left'
-                            placeholder="Password"
-                            onChange={this.onchange}
-                        />
-                        {errors.confirmpassword && <InlineError text={errors.confirmpassword} />}
-                    </Form.Field>
-                    <Button color='teal' fluid size='large'>登入</Button>
-                </Form>
-                <Message attached='bottom' warning>
-                    <Icon name="vcard"/>
-                    已經是會員了嗎?&nbsp;&nbsp;<Link to="/">登入</Link>
-                </Message>
+                        <Form 
+                            className='attached fluid segment' 
+                            onSubmit={this.onSubmit} 
+                            loading={loading}
+                            size='large'
+                        >
+                            {errors.global && (
+                                <Message negative>
+                                    <Message.Header>{ errors.global }</Message.Header>
+                                </Message> 
+                            )}
+                            <Form.Field error={!!errors.email}>
+                                <Input 
+                                    type="email" 
+                                    name="email" 
+                                    icon='user'
+                                    iconPosition='left'
+                                    placeholder="example@mail.com"
+                                    onChange={this.onchange}
+                                />
+                                {errors.email && <InlineError text={errors.email} />}
+                            </Form.Field>
+                            <Form.Field error={!!errors.password}>
+                                <Input 
+                                    type="password" 
+                                    name="password" 
+                                    icon='lock'
+                                    iconPosition='left'
+                                    placeholder="Password"
+                                    onChange={this.onchange}
+                                />
+                                {errors.password && <InlineError text={errors.password} />}
+                            </Form.Field>
+                            <Form.Field error={!!errors.confirmpassword}>
+                                <Input 
+                                    type="password" 
+                                    name="confirmpassword" 
+                                    icon='lock'
+                                    iconPosition='left'
+                                    placeholder="Password"
+                                    onChange={this.onchange}
+                                />
+                                {errors.confirmpassword && <InlineError text={errors.confirmpassword} />}
+                            </Form.Field>
+                            <Button color='teal' fluid size='large'>登入</Button>
+                        </Form>
+                        <Message attached='bottom' warning>
+                            <Icon name="vcard"/>
+                            已經是會員了嗎?&nbsp;&nbsp;<Link to="/">登入</Link>
+                        </Message>
+                    </Grid.Column>
+                </Grid>
             </div>
         );
     }
